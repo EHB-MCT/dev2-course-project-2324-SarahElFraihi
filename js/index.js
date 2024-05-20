@@ -33,7 +33,7 @@ function init() {
 
 		myChart.destroy();
 
-		// code van Chat.js genomen en toewijzingen aan gebracht
+		// code van Chat.js genomen en toewijzingen er aan gebracht
 		myChart = new Chart(ctx, {
 			type: "bar",
 			data: {
