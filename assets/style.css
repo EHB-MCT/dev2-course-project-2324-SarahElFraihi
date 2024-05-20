@@ -23,3 +23,14 @@ h1 {
 	margin: 20px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+#myChart {
+	max-width: 600px;
+	max-height: 250px;
+}
+
+#chartContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
