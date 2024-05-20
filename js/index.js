@@ -1,5 +1,26 @@
 let currentCategory = "People";
 let currentPage = 1;
+const ctx = document.getElementById("myChart");
+let myChart = new Chart(ctx, {
+	type: "bar",
+	data: {
+		labels: ["People", "Planets", "Films", "Species", "Vehicles", "Starship"],
+		datasets: [
+			{
+				label: "count",
+				data: [82, 60, 6, 37, 39, 36],
+				borderWidth: 3,
+			},
+		],
+	},
+	options: {
+		scales: {
+			y: {
+				beginAtZero: true,
+			},
+		},
+	},
+});
 
 function init() {
 	FetchAllData();
@@ -9,42 +30,210 @@ function init() {
 		clearContainer();
 		currentCategory = "People";
 		FetchPeople(1);
+
+		myChart.destroy();
+
+		myChart = new Chart(ctx, {
+			type: "bar",
+			data: {
+				labels: ["Planets", "Films", "Species", "Vehicles", "Starship"],
+				datasets: [
+					{
+						label: "count",
+						data: [60, 6, 37, 39, 36],
+						borderWidth: 3,
+					},
+				],
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true,
+					},
+				},
+			},
+		});
 	});
 
 	document.getElementById("Planets").addEventListener("click", () => {
 		clearContainer();
 		currentCategory = "Planets";
 		FetchPlanet(1);
+
+		myChart.destroy();
+
+		myChart = new Chart(ctx, {
+			type: "bar",
+			data: {
+				labels: ["People", "Films", "Species", "Vehicles", "Starship"],
+				datasets: [
+					{
+						label: "count",
+						data: [82, 6, 37, 39, 36],
+						borderWidth: 3,
+					},
+				],
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true,
+					},
+				},
+			},
+		});
 	});
 
 	document.getElementById("Films").addEventListener("click", () => {
 		clearContainer();
 		currentCategory = "Films";
 		FetchFilms(1);
+
+		myChart.destroy();
+
+		myChart = new Chart(ctx, {
+			type: "bar",
+			data: {
+				labels: ["People", "Planets", "Species", "Vehicles", "Starship"],
+				datasets: [
+					{
+						label: "count",
+						data: [82, 60, 37, 39, 36],
+						borderWidth: 3,
+					},
+				],
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true,
+					},
+				},
+			},
+		});
 	});
 
 	document.getElementById("Species").addEventListener("click", () => {
 		clearContainer();
 		currentCategory = "Species";
 		FetchSpecies(1);
+
+		myChart.destroy();
+
+		myChart = new Chart(ctx, {
+			type: "bar",
+			data: {
+				labels: ["People", "Planets", "Films", "Vehicles", "Starship"],
+				datasets: [
+					{
+						label: "count",
+						data: [82, 60, 6, 39, 36],
+						borderWidth: 3,
+					},
+				],
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true,
+					},
+				},
+			},
+		});
 	});
 
 	document.getElementById("Vehicles").addEventListener("click", () => {
 		clearContainer();
 		currentCategory = "Vehicles";
 		FetchVehicles(1);
+
+		myChart.destroy();
+
+		myChart = new Chart(ctx, {
+			type: "bar",
+			data: {
+				labels: ["People", "Planets", "Films", "Species", "Starship"],
+				datasets: [
+					{
+						label: "count",
+						data: [82, 60, 6, 37, 36],
+						borderWidth: 3,
+					},
+				],
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true,
+					},
+				},
+			},
+		});
 	});
 
 	document.getElementById("Starships").addEventListener("click", () => {
 		clearContainer();
 		currentCategory = "Starships";
 		FetchStarship(1);
+
+		myChart.destroy();
+
+		myChart = new Chart(ctx, {
+			type: "bar",
+			data: {
+				labels: ["People", "Planets", "Films", "Species", "Vehicles"],
+				datasets: [
+					{
+						label: "count",
+						data: [82, 60, 6, 37, 39],
+						borderWidth: 3,
+					},
+				],
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true,
+					},
+				},
+			},
+		});
 	});
 
 	// reset button
 	document.getElementById("Reset").addEventListener("click", () => {
 		clearContainer();
 		FetchAllData(); // Reset data
+
+		myChart.destroy();
+
+		myChart = new Chart(ctx, {
+			type: "bar",
+			data: {
+				labels: [
+					"People",
+					"Planets",
+					"Films",
+					"Species",
+					"Vehicles",
+					"Starship",
+				],
+				datasets: [
+					{
+						label: "count",
+						data: [82, 60, 6, 37, 39, 36],
+						borderWidth: 3,
+					},
+				],
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true,
+					},
+				},
+			},
+		});
 	});
 
 	// see more button
