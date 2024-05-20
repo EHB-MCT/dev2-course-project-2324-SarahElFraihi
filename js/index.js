@@ -1,3 +1,6 @@
+let currentCategory = "People";
+let currentPage = 1;
+
 function init() {
 	FetchAllData();
 
@@ -17,6 +20,24 @@ function init() {
 		FetchFilms(1);
 	});
 
+	document.getElementById("Species").addEventListener("click", () => {
+		clearContainer();
+		currentCategory = "Species";
+		FetchSpecies(1);
+	});
+
+	document.getElementById("Vehicles").addEventListener("click", () => {
+		clearContainer();
+		currentCategory = "Vehicles";
+		FetchVehicles(1);
+	});
+
+	document.getElementById("Starships").addEventListener("click", () => {
+		clearContainer();
+		currentCategory = "Starships";
+		FetchStarship(1);
+	});
+
 	document.getElementById("seeMore").addEventListener("click", () => {
 		if (currentCategory === "People") {
 			FetchPeople(currentPage + 1);
@@ -24,6 +45,12 @@ function init() {
 			FetchPlanet(currentPage + 1);
 		} else if (currentCategory === "Films") {
 			FetchFilms(currentPage + 1);
+		} else if (currentCategory === "Species") {
+			FetchSpecies(currentPage + 1);
+		} else if (currentCategory === "Vehicles") {
+			FetchVehicles(currentPage + 1);
+		} else if (currentCategory === "Starships") {
+			FetchStarship(currentPage + 1);
 		}
 	});
 }
@@ -32,8 +59,10 @@ function FetchAllData() {
 	FetchPeople(1, false);
 	FetchPlanet(1, false);
 	FetchFilms(1, false);
+	FetchSpecies(1, false);
+	FetchVehicles(1, false);
+	FetchStarship(1, false);
 }
-
 function clearContainer() {
 	document.querySelector("#container").innerHTML = "";
 }
@@ -188,6 +217,138 @@ function DisplaySpecies(
 	<p> haire colors : ${hair}</p>
 	<p> eye colors : ${eye}</p>
 	<p> life span : ${life}</p>
+    </div>`;
+	document.querySelector("#container").innerHTML += html;
+}
+
+function FetchVehicles(page) {
+	fetch(`https://swapi.dev/api/vehicles/?page=${page}`)
+		.then((response) => response.json())
+		.then((RawData) => {
+			RawData.results.forEach((Data) => {
+				const names = Data.name;
+				const model = Data.model;
+				const manufacturer = Data.manufacturer;
+				const credits = Data.cost_in_credits;
+				const length = Data.length;
+				const speed = Data.max_atmosphering_speed;
+				const crew = Data.crew;
+				const passengers = Data.passengers;
+				const capacity = Data.cargo_capacity;
+				const consumables = Data.consumables;
+				const vehicle = Data.vehicle_class;
+				DisplayVehicles(
+					names,
+					model,
+					manufacturer,
+					credits,
+					length,
+					speed,
+					crew,
+					passengers,
+					capacity,
+					consumables,
+					vehicle
+				);
+			});
+			currentPage = page;
+		});
+}
+
+function DisplayVehicles(
+	names,
+	model,
+	manufacturer,
+	credits,
+	length,
+	speed,
+	crew,
+	passengers,
+	capacity,
+	consumables,
+	vehicle
+) {
+	const html = `<div class="box"><h3>${names}</h3>
+    <p> model : ${model}</p>
+    <p> manufacturer : ${manufacturer}</p>
+    <p> cost in credits : ${credits}</p>
+	<p> length : ${length}</p>
+	<p> max atmosphering speed : ${speed}</p>
+	<p> crew : ${crew}</p>
+	<p> passengers : ${passengers}</p>
+	<p> cargo capacity : ${capacity}</p>
+	<p> consumables : ${consumables}</p>
+	<p> vehicle class : ${vehicle}</p>
+    </div>`;
+	document.querySelector("#container").innerHTML += html;
+}
+
+function FetchStarship(page) {
+	fetch(`https://swapi.dev/api/starships/?page=${page}`)
+		.then((response) => response.json())
+		.then((RawData) => {
+			RawData.results.forEach((Data) => {
+				const names = Data.name;
+				const model = Data.model;
+				const manufacturer = Data.manufacturer;
+				const credits = Data.cost_in_credits;
+				const length = Data.length;
+				const speed = Data.max_atmosphering_speed;
+				const crew = Data.crew;
+				const passengers = Data.passengers;
+				const capacity = Data.cargo_capacity;
+				const consumables = Data.consumables;
+				const rating = Data.hyperdrive_rating;
+				const MGLT = Data.MGLT;
+				const starship = Data.starship_class;
+				DisplayStarship(
+					names,
+					model,
+					manufacturer,
+					credits,
+					length,
+					speed,
+					crew,
+					passengers,
+					capacity,
+					consumables,
+					rating,
+					MGLT,
+					starship
+				);
+			});
+			currentPage = page;
+		});
+}
+
+function DisplayStarship(
+	names,
+	model,
+	manufacturer,
+	credits,
+	length,
+	speed,
+	crew,
+	passengers,
+	capacity,
+	consumables,
+	rating,
+	MGLT,
+	starship
+) {
+	const html = `<div class="box"><h3>${names}</h3>
+    <p> model : ${model}</p>
+    <p> manufacturer : ${manufacturer}</p>
+    <p> cost in credits : ${credits}</p>
+	<p> length : ${length}</p>
+	<p> max atmosphering speed : ${speed}</p>
+	<p> crew : ${crew}</p>
+	<p> passengers : ${passengers}</p>
+	<p> cargo capacity : ${capacity}</p>
+	<p> consumables : ${consumables}</p>
+	<p> hyperdive rating : ${rating}</p>
+	<p> MGLT : ${MGLT}</p>
+	<p> starship class : ${starship}</p>
     </div>`;
 	document.querySelector("#container").innerHTML += html;
 }
