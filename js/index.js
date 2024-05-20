@@ -22,8 +22,14 @@ function FetchPeople() {
 }
 
 function DisplayPeople(name, height, mass, hair, eye, birth, gender) {
-	const html = ` <h3>${name}</h3>
-	<h3>${name}</h3>
+	const html = ` <div class="box"><h3>${name}</h3>
+	<p> height : ${height} cm</p>
+	<p> mass : ${mass} kg</p>
+	<p> hair color : ${hair}</p>
+	<p> eye color : ${eye}</p>
+	<p> birth year : ${birth}</p>
+	<p>	gender : ${gender}</p>
+	</div> 
 	`;
 	document.querySelector("#container").innerHTML += html;
 }
