@@ -8,19 +8,24 @@ function FetchPeople() {
 			return response.json();
 		})
 		.then(function (RawData) {
-			console.log(RawData);
 			RawData.results.forEach(function (Data) {
-				console.log(Data);
-				displayData(Data);
+				const name = Data.name;
+				const height = Data.height;
+				const mass = Data.mass;
+				const hair = Data.hair_color;
+				const eye = Data.eye_color;
+				const birth = Data.birth_year;
+				const gender = Data.gender;
+				DisplayPeople(name, height, mass, hair, eye, birth, gender);
 			});
 		});
 }
 
-function displayData(Data) {
-	Data.results.forEach((item) => {
-		output += `
-	<h4>${item.name}</h4>`;
-	});
+function DisplayPeople(name, height, mass, hair, eye, birth, gender) {
+	const html = ` <h3>${name}</h3>
+	<h3>${name}</h3>
+	`;
+	document.querySelector("#container").innerHTML += html;
 }
 
 init();
