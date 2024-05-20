@@ -1,6 +1,3 @@
-let currentCategory = "People";
-let currentPage = 1;
-
 function init() {
 	FetchAllData();
 
