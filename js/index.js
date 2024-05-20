@@ -4,7 +4,7 @@ let currentPage = 1;
 function init() {
 	FetchAllData();
 
-	// Add event listeners to sort buttons
+	// sort buttons
 	document.getElementById("People").addEventListener("click", () => {
 		clearContainer();
 		currentCategory = "People";
@@ -41,13 +41,13 @@ function init() {
 		FetchStarship(1);
 	});
 
-	// Add event listener to reset button
+	// reset button
 	document.getElementById("Reset").addEventListener("click", () => {
 		clearContainer();
 		FetchAllData(); // Reset data
 	});
 
-	// Add event listener to see more button
+	// see more button
 	document.getElementById("seeMore").addEventListener("click", () => {
 		if (currentCategory === "People") {
 			FetchPeople(currentPage + 1);
@@ -363,5 +363,4 @@ function DisplayStarship(
 	document.querySelector("#container").innerHTML += html;
 }
 
-// Initialize the script
 init();
