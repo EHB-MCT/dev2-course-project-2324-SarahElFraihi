@@ -33,6 +33,7 @@ function init() {
 
 		myChart.destroy();
 
+		// code van Chat.js genomen en toewijzingen aan gebracht
 		myChart = new Chart(ctx, {
 			type: "bar",
 			data: {
@@ -237,6 +238,7 @@ function init() {
 	});
 
 	// see more button
+	// dit deel, fetchAllData en ClearContainer heb ik met behulp van ChatGPT gemaakt
 	document.getElementById("seeMore").addEventListener("click", () => {
 		if (currentCategory === "People") {
 			FetchPeople(currentPage + 1);
